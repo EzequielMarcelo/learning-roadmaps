@@ -4,11 +4,27 @@
   padding: 2rem;
   text-align: center;
 }
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -23,21 +39,4 @@
 
 .read-the-docs {
   color: #888;
-}
-.add-btn {
-  min-width: 44px;
-  height: 42px;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.input-area {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  max-width: 420px;
-  margin: 0 auto 1.5rem;
 }
