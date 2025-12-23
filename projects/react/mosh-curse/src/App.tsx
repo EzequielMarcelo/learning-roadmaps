@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div>
-      {isAlertVisible && <Alert>Button Click Alert</Alert>}
+      {isAlertVisible && <Alert onClose={() => setIsAlertVisible(false)}>Button Click Alert</Alert>}
       <Button
         color="dark"
         text="Click Me"
