@@ -26,15 +26,9 @@ Cada roadmap tem uma estrutura modular, com:
 │   ├── react-roadmap.md
 │   └── 3d-printing.md
 ├── 📂projects/
-│   ├── 📂rust/
-│   │   ├── mini_cli_tool/
-│   │   └── embedded_demo/
-│   ├── 📂python/
-│   │   ├── api_fastapi/
-│   │   └── data_logger/
-│   └── 📂web/
-│       ├── react_dashboard/
-│       └── node_api/
+│   └── 📂react/
+│       ├── 📂mosh-course/
+│       └── 📂task-list/
 └── ...
 ```
 
