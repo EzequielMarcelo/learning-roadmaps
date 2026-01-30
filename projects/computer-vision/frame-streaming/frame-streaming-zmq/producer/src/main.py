@@ -8,6 +8,9 @@ from libs.publisher import FramePublisher
 def main():
     isRunning = True
     params = CoreParams()
+    timeLastFPS = time.monotonic()
+    fps = 0
+    frameCount = 0
 
     cap = cv2.VideoCapture(params.cameraIndex)
     if not cap.isOpened():
@@ -25,10 +28,21 @@ def main():
             if not ret:
                 continue
 
-            publisher.send(frame, params.jpegQuality)
+            frameCount += 1
+
+            elapsed = time.monotonic() - timeLastFPS
+            if elapsed >= 1.0:
+                fps = frameCount / elapsed
+                frameCount = 0
+                timeLastFPS = time.monotonic()
+
+            text = f"Producer FPS: {fps:.2f}"
+            cv2.putText(frame, text, (5, 50), 0, 0.7, (255, 0, 0), 2)
+            
+            publisher.send(frame, params.jpegQuality) 
             cv2.imshow("Producer", frame)
             key = cv2.waitKey(max(1, int(1000 / params.fps)))
-            
+
             # encerra o core
             if key == ord("q"):
                 isRunning = False

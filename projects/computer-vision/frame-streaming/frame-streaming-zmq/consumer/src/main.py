@@ -1,11 +1,15 @@
 import cv2
 import numpy as np
+import time
 
 from libs.settings import ConsumerSettings
 from libs.subscriber import FrameSubscriber
 
 def main():
     isRunning = True
+    timeLastFPS = time.monotonic()
+    fps = 0
+    frameCount = 0
     sub = FrameSubscriber(ConsumerSettings.FRAME_ADDR)
 
     print("[CONSUMER] waiting for frames...")
@@ -22,9 +26,21 @@ def main():
             if frame is None:
                 continue
 
+            frameCount += 1
+            
+            elapsed = time.monotonic() - timeLastFPS
+            if elapsed >= 1.0:
+                fps = frameCount / elapsed
+                frameCount = 0
+                timeLastFPS = time.monotonic()
+            
+            text = f"Consumer FPS: {fps:.2f}"
+            cv2.putText(frame, text, (5, 70), 0, 0.7, (0, 255, 0), 2)
+
             cv2.imshow("Consumer", frame)
 
-            if cv2.waitKey(1) == 27:  # ESC
+            # encerra o programa
+            if cv2.waitKey(1) == ord("q"):
                 isRunning = False
 
     except KeyboardInterrupt:
