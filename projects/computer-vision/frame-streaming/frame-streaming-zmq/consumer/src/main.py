@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import time
+from collections import deque
 
 from libs.settings import ConsumerSettings
 from libs.subscriber import FrameSubscriber
@@ -11,17 +12,21 @@ def main():
     fps = 0
     frameCount = 0
     sub = FrameSubscriber(ConsumerSettings.FRAME_ADDR)
+    latencyQueue = deque(maxlen=100)
+    textColor = (0, 0, 255)
 
     print("[CONSUMER] waiting for frames...")
 
     try:
         while isRunning:
-            data = sub.recv()
+            _, t0, frame = sub.recv_multipart()
 
-            frame = cv2.imdecode(
-                np.frombuffer(data, np.uint8),
-                cv2.IMREAD_COLOR
-            )
+            t1 = time.time_ns()
+
+            latency_ms = (t1 - t0) / 1e6
+            latencyQueue.append(latency_ms)
+            latency_ms_avg = np.mean(latencyQueue)
+
 
             if frame is None:
                 continue
@@ -35,7 +40,10 @@ def main():
                 timeLastFPS = time.monotonic()
             
             text = f"Consumer FPS: {fps:.2f}"
-            cv2.putText(frame, text, (5, 70), 0, 0.7, (0, 255, 0), 2)
+            cv2.putText(frame, text, (5, 70), 0, 0.7, textColor, 2)
+
+            text = f"Latency: {latency_ms_avg:.2f} ms"
+            cv2.putText(frame, text, (5, 90), 0, 0.7, textColor, 2)
 
             cv2.imshow("Consumer", frame)
 

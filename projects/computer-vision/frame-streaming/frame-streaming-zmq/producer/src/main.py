@@ -39,7 +39,8 @@ def main():
             text = f"Producer FPS: {fps:.2f}"
             cv2.putText(frame, text, (5, 50), 0, 0.7, (255, 0, 0), 2)
             
-            publisher.send(frame, params.jpegQuality) 
+            t0 = time.time_ns()
+            publisher.send(frame, t0, params.jpegQuality) 
             cv2.imshow("Producer", frame)
             key = cv2.waitKey(max(1, int(1000 / params.fps)))
 
