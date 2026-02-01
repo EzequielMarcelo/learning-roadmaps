@@ -13,6 +13,10 @@ def main():
     frameCount = 0
 
     cap = cv2.VideoCapture(params.cameraIndex)
+
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+    
     if not cap.isOpened():
         raise RuntimeError("Camera indisponivel.")
 
