@@ -40,12 +40,13 @@ Cada pasta contém um **roadmap independente**, com seus próprios passos e link
 
 ## 🚀 Roadmaps Atuais
 
-| Tecnologia / Tema                       | Descrição                                            | Status             |
-| --------------------------------------- | ---------------------------------------------------- | ------------------ |
-| ⚛️ [React](./roadmaps/react-roadmap.md) | Fundamentos, Hooks e Integração com APIs             | 🔄 Em andamento    |
-| 🦀 [Rust](./roadmaps/rust-roadmap.md)   | Fundamentos, Embedded e CLI Tools                    | ⏸️ Pausado         |
-| 🟢 [Node.js]()                          | Backend, Express, REST APIs e Auth                   | 📘 Em planejamento |
-| 🧱 [3D Printing]()                      | Modelagem com SolidWorks e fatiamento com OrcaSlicer | 📘 Em planejamento |
+| Tecnologia / Tema                       | Descrição                                                                    | Status             |
+| --------------------------------------- | ---------------------------------------------------------------------------- | ------------------ |
+| ⚛️ [React](./roadmaps/react-roadmap.md) | Fundamentos, Hooks e Integração com APIs                                     | 🔄 Em andamento    |
+| 🦀 [Rust](./roadmaps/rust-roadmap.md)   | Fundamentos, Embedded e CLI Tools                                            | ⏸️ Pausado         |
+| 🟢 [Node.js]()                          | Backend, Express, REST APIs e Auth                                           | 📘 Em planejamento |
+| 🧱 [3D Printing]()                      | Modelagem com SolidWorks e fatiamento com OrcaSlicer                         | 📘 Em planejamento |
+| 👁️ [Computer Vision]()                  | IA aplicada à visão computacional, processamento de imagem e frame streaming | 📘 Em planejamento |
 
 ---
 
