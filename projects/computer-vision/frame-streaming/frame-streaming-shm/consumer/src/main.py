@@ -25,9 +25,10 @@ def main():
 
             t1 = time.time_ns()
 
-            latency_ms = (t1 - t0) / 1e6
-            latencyQueue.append(latency_ms)
-            latency_ms_avg = np.mean(latencyQueue)
+            latencyMs = (t1 - t0) / 1e6
+            latencyQueue.append(latencyMs)
+            latencyMsAvg = np.mean(latencyQueue)
+            standardDev = np.std(latencyQueue)
 
             if frame is None:
                 continue
@@ -43,9 +44,11 @@ def main():
             text = f"Consumer FPS: {fps:.2f}"
             cv2.putText(frame, text, (5, 70), 0, 0.7, textColor, 2)
 
-            text = f"Latency: {latency_ms_avg:.2f} ms"
+            text = f"Latency: {latencyMsAvg:.2f} ms"
             cv2.putText(frame, text, (5, 90), 0, 0.7, textColor, 2)
 
+            text = f"Std Dev: {standardDev:.2f} ms"
+            cv2.putText(frame, text, (5, 110), 0, 0.7, textColor, 2)
             cv2.imshow("Consumer", frame)
 
             # encerra o programa
