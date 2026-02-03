@@ -1,5 +1,8 @@
 import numpy as np
 
+class CoreSettings:
+    SHOW_FRAME_SIZE = (854, 480)
+    
 class PublisherSettings:
     FRAME_HEIGHT = 720
     FRAME_WIDTH = 1280

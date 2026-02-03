@@ -3,7 +3,7 @@ import cv2
 
 from libs.state import CoreParams
 from libs.publisher import FramePublisher
-from libs.settings import PublisherSettings
+from libs.settings import CoreSettings, PublisherSettings
 
 def main():
     isRunning = True
@@ -46,6 +46,7 @@ def main():
             
             t0 = time.time_ns()
             publisher.send(frame, t0) 
+
             cv2.imshow("Producer", frame)
             key = cv2.waitKey(max(1, int(1000 / params.fps)))
 

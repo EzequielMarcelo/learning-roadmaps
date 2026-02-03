@@ -1,5 +1,8 @@
 import numpy as np
 
+class ConsumerSettings:
+    SHOW_FRAME_SIZE = (854, 480)
+
 class SubscriberSettings:
     FRAME_HEIGHT = 720
     FRAME_WIDTH = 1280
