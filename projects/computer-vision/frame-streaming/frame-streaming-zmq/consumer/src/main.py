@@ -48,6 +48,7 @@ def main():
             text = f"Std Dev: {standardDev:.2f} ms"
             cv2.putText(frame, text, (5, 110), 0, 0.7, textColor, 2)
 
+            frame = cv2.resize(frame, ConsumerSettings.SHOW_FRAME_SIZE)
             cv2.imshow("Consumer", frame)
 
             # encerra o programa
