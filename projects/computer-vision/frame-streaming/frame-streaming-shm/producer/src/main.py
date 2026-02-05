@@ -47,7 +47,8 @@ def main():
             t0 = time.time_ns()
             publisher.send(frame, t0) 
 
-            cv2.imshow("Producer", frame)
+            showFrame = cv2.resize(frame, CoreSettings.SHOW_FRAME_SIZE)
+            cv2.imshow("Producer", showFrame)
             key = cv2.waitKey(max(1, int(1000 / params.fps)))
 
             # encerra o core
